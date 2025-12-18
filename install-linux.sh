@@ -4,17 +4,17 @@
 # Senterm One-Line Installer for Linux
 # 
 # Usage:
-#   curl -sSfL https://raw.githubusercontent.com/BitSpecterCore/senterm-release/main/install-linux.sh | bash
+#   curl -sSfL https://raw.githubusercontent.com/neuralfoundry-coder/senterm-release/main/install-linux.sh | bash
 #
 # Or with specific version:
-#   curl -sSfL https://raw.githubusercontent.com/BitSpecterCore/senterm-release/main/install-linux.sh | bash -s -- --version 20251218
+#   curl -sSfL https://raw.githubusercontent.com/neuralfoundry-coder/senterm-release/main/install-linux.sh | bash -s -- --version 20251218
 #
 # ============================================================================
 
 set -e
 
 # Configuration - Release-only repository
-REPO_OWNER="BitSpecterCore"
+REPO_OWNER="neuralfoundry-coder"
 REPO_NAME="senterm-release"
 BINARY_NAME="senterm"
 COMMAND_NAME="x"

@@ -1,5 +1,7 @@
 # Senterm Release
 
+Binary distribution repository for [Senterm](https://github.com/neuralfoundry-coder/senterm).
+
 ## One-Line Installation
 
 ### macOS (Universal: Intel + Apple Silicon)
