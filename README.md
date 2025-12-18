@@ -1,29 +1,27 @@
 # Senterm Release
 
-Binary distribution repository for [Senterm](https://github.com/BitSpecterCore/senterm).
-
 ## One-Line Installation
 
 ### macOS (Universal: Intel + Apple Silicon)
 
 ```bash
-curl -sSfL https://raw.githubusercontent.com/BitSpecterCore/senterm-release/main/install.sh | bash
+curl -sSfL https://raw.githubusercontent.com/neuralfoundry-coder/senterm-release/main/install.sh | bash
 ```
 
 ### Linux (x86_64)
 
 ```bash
-curl -sSfL https://raw.githubusercontent.com/BitSpecterCore/senterm-release/main/install-linux.sh | bash
+curl -sSfL https://raw.githubusercontent.com/neuralfoundry-coder/senterm-release/main/install-linux.sh | bash
 ```
 
 ### With specific version
 
 ```bash
 # macOS
-curl -sSfL https://raw.githubusercontent.com/BitSpecterCore/senterm-release/main/install.sh | bash -s -- --version 20251218
+curl -sSfL https://raw.githubusercontent.com/neuralfoundry-coder/senterm-release/main/install.sh | bash -s -- --version 20251218
 
 # Linux
-curl -sSfL https://raw.githubusercontent.com/BitSpecterCore/senterm-release/main/install-linux.sh | bash -s -- --version 20251218
+curl -sSfL https://raw.githubusercontent.com/neuralfoundry-coder/senterm-release/main/install-linux.sh | bash -s -- --version 20251218
 ```
 
 ## Usage
@@ -65,10 +63,10 @@ You can also configure API keys within the app. Keys will be securely stored in:
 1. Download the archive:
    ```bash
    # macOS
-   curl -LO https://raw.githubusercontent.com/BitSpecterCore/senterm-release/main/<version>/senterm-macos-universal.tar.gz
+   curl -LO https://raw.githubusercontent.com/neuralfoundry-coder/senterm-release/main/<version>/senterm-macos-universal.tar.gz
    
    # Linux
-   curl -LO https://raw.githubusercontent.com/BitSpecterCore/senterm-release/main/<version>/senterm-linux-x86_64.tar.gz
+   curl -LO https://raw.githubusercontent.com/neuralfoundry-coder/senterm-release/main/<version>/senterm-linux-x86_64.tar.gz
    ```
 
 2. Extract and install:
