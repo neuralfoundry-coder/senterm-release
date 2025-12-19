@@ -113,12 +113,28 @@ echo -e "${GREEN}✓${NC} Download complete"
 echo -e "${BLUE}→${NC} Extracting..."
 tar -xzf "${ASSET_NAME}"
 
-# Find the binary
+# Debug: Show extracted contents
+echo -e "${BLUE}→${NC} Archive contents:"
+ls -la
+
+# Find the binary (check multiple locations)
 if [[ -f "${BINARY_NAME}" ]]; then
     SOURCE_BINARY="${BINARY_NAME}"
+elif [[ -f "senterm-linux-x86_64/${BINARY_NAME}" ]]; then
+    SOURCE_BINARY="senterm-linux-x86_64/${BINARY_NAME}"
+elif [[ -f "release/${BINARY_NAME}" ]]; then
+    SOURCE_BINARY="release/${BINARY_NAME}"
 else
-    echo -e "${RED}✗ Binary not found in archive${NC}"
-    exit 1
+    # Try to find it anywhere
+    FOUND_BINARY=$(find . -name "${BINARY_NAME}" -type f 2>/dev/null | head -1)
+    if [[ -n "$FOUND_BINARY" ]]; then
+        SOURCE_BINARY="$FOUND_BINARY"
+    else
+        echo -e "${RED}✗ Binary not found in archive${NC}"
+        echo "Extracted files:"
+        find . -type f
+        exit 1
+    fi
 fi
 
 echo -e "${GREEN}✓${NC} Extracted successfully"
