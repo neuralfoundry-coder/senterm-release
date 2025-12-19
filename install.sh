@@ -141,11 +141,19 @@ echo -e "${BLUE}→${NC} Installing to ${INSTALL_DIR}/${COMMAND_NAME}..."
 if [[ -w "${INSTALL_DIR}" ]]; then
     cp "${SOURCE_BINARY}" "${INSTALL_DIR}/${COMMAND_NAME}"
     chmod +x "${INSTALL_DIR}/${COMMAND_NAME}"
+    # Remove quarantine and ad-hoc sign for macOS
+    xattr -cr "${INSTALL_DIR}/${COMMAND_NAME}" 2>/dev/null || true
+    codesign --force --deep --sign - "${INSTALL_DIR}/${COMMAND_NAME}" 2>/dev/null || true
 else
     echo -e "${YELLOW}→${NC} Administrator privileges required..."
     sudo cp "${SOURCE_BINARY}" "${INSTALL_DIR}/${COMMAND_NAME}"
     sudo chmod +x "${INSTALL_DIR}/${COMMAND_NAME}"
+    # Remove quarantine and ad-hoc sign for macOS
+    sudo xattr -cr "${INSTALL_DIR}/${COMMAND_NAME}" 2>/dev/null || true
+    sudo codesign --force --deep --sign - "${INSTALL_DIR}/${COMMAND_NAME}" 2>/dev/null || true
 fi
+
+echo -e "${GREEN}✓${NC} Code signed (ad-hoc)"
 
 # Verify installation
 echo ""
