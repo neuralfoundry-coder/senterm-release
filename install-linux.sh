@@ -71,7 +71,16 @@ echo -e "${GREEN}✓${NC} Detected: Linux ($ARCH)"
 # Get latest version if not specified
 if [[ -z "$VERSION" ]]; then
     echo -e "${BLUE}→${NC} Fetching latest release..."
+    
+    # Try latest.txt first
     VERSION=$(curl -sSf "${BASE_URL}/latest.txt" 2>/dev/null | tr -d '[:space:]')
+    
+    # If latest.txt fails, try to find latest date folder via GitHub API
+    if [[ -z "$VERSION" ]]; then
+        echo -e "${BLUE}→${NC} Scanning for latest build..."
+        VERSION=$(curl -sSf "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents" 2>/dev/null | \
+            grep '"name"' | grep -oE '[0-9]{8}' | sort -rn | head -1)
+    fi
     
     if [[ -z "$VERSION" ]]; then
         echo -e "${RED}✗ Failed to get latest version${NC}"
